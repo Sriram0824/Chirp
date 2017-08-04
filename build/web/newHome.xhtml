@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Friend Profile</title>
+        <script src="Scripts/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="Scripts/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+      
+    </h:head>
+    <h:body>
+        
+        
+         <ui:composition template="Template.xhtml">
+
+
+            <ui:define name="content">
+
+        
+        
+        <div class="row">
+            
+            <div class="col-md-3">
+                
+                <table class="table table-striped">
+                    <h:form>
+                    <tr>
+                        <td colapsn="3" align="center">
+                            <h:graphicImage url="#{home.profilePic}" width="200px" height="200px"></h:graphicImage>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td colapsn="3" align="center">
+                           <h:commandButton class="btn btn-primary" value="Upload Image" action="UploadFileTest.xhtml"></h:commandButton>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td colapsn="3" align="center">
+                        Welcome #{home.firstName} #{home.lastName} 
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                        Followers: <h:commandLink value="#{home.followers}" action="Followers.xhtml"></h:commandLink>
+                        </td>
+                        <td>
+                        Following: <h:commandLink value="#{home.following}" action="Following.xhtml"></h:commandLink>
+                        </td>
+                        <td>
+                        Chirps: #{home.tweetCounts}
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td colapsn="3">
+                        <h:commandLink value="View Chirps" action="UserProfile"></h:commandLink>
+                        </td>
+                    </tr>
+                        </h:form>
+                </table>
+                
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <Strong>Hash Tag</Strong>
+                        </td>
+                        <td>
+                            <Strong>Trending Count</Strong>
+                        </td>
+                    </tr>
+                    
+                    <c:forEach var="entry" items="${home.trendingHashTags}"> 
+                        <tr>
+                            <td>${entry.key}</td> 
+                            <td>${entry.value}</td>
+                        </tr> 
+                    </c:forEach>
+                        
+                </table>
+                
+            </div>
+         
+            
+          <div class="col-md-6">
+                
+            <table class="table table-striped">
+                    
+                <h:form class="form form-control">
+               
+                    <tr>
+                        
+                       <td colspan="2" >
+                           
+                          <h:inputText class="form-control" id="txtSearch" value="#{home.searchQuery}" style="width: 400px;" >
+                              <f:ajax execute="txtSearch" event="keyup" render="divSearchResult" listener="#{home.SearchChirpQuery()}" ></f:ajax> 
+                           </h:inputText>
+                           
+                        </td>
+                        
+                        <td>
+                            <h:commandButton class="btn btn-primary" value="Search" action="#{home.RedirectToSearchResult()}"></h:commandButton>
+                        </td>
+                   </tr>
+                </h:form>
+                </table>
+                    
+              <table>
+                  <h:form>
+                    <tr>
+                        <td colspan="3">
+                        <h:panelGroup id="divSearchResult">
+                            <c:forEach var="o" items="#{home.searchResult}" >
+                                <div>
+                                    <h:outputLabel class="form-control" onclick="AutoCompleteText(this)" value="#{o.searchResultText}"></h:outputLabel>
+
+                                </div>
+                            </c:forEach>
+                        </h:panelGroup>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td colspan="3" align="center">
+                         <h:inputText class="form-control" value="#{home.tweetText}" id="txtTweet" style="width: 400px;height: 100px;border:1px solid #e2e2e2;" >
+                                <f:ajax execute="txtTweet" event="keyup" render="lblHashTags" listener="#{home.CheckHashTags()}"></f:ajax>
+                            </h:inputTextarea>
+                        </td>
+                        
+                        <td colspan="3" align="center">
+                          <h:commandButton class="btn btn-primary" value="Chirp" action="#{home.SubmitTweet()}" style="border-radius: 3px;padding: 3px;">
+                           </h:commandButton>
+                        </td>
+                        
+                        <td colspan="3" align="center">
+                            <span style="margin-left: 5px;">
+                                <h:outputLabel class="form-control" value="#{home.message}" style="color: red;"></h:outputLabel>
+                            </span>
+                        </td>
+                        
+                        <td>
+                            <div>
+                                <h:outputLabel class="form-control" id="lblHashTags" value="#{home.displayHashTags}"></h:outputLabel>
+                            </div>
+                        </td>
+
+                    </tr>
+
+              </h:form>
+                    
+           </table> 
+              
+              
+              <table>
+
+                  <h:form>
+
+                      <tr>
+                          <td>
+                              <ui:repeat var="o" value="#{home.feeds}">
+                                  <div class="row" style="padding: 10px;">
+
+                                      <div class="panel-group">
+                                          <div class="panel panel-primary">
+                                              <div class="panel-heading">
+                                                  <span style="font-size: 20px">
+                                                        #{o.userFirstName} #{o.userLastName}
+                                                      <span style="font-size: 16px;">
+                                                          @#{o.userName}
+                                                      </span>
+                                                  </span>
+                                                  <span style="font-size: 12px;">#{o.message}</span>
+                                              </div>
+                                              <div class="panel-body">
+                                                    #{o.tweetText}
+                                                  <span style="float:right">
+                                                      <h:commandButton class="btn btn-primary" value="ReChirp" action="#{home.ReChirp(o.tweetText, o.userId)}"></h:commandButton>
+                                                  </span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                              </ui:repeat>
+                          </td>
+
+                      </tr>
+
+                  </h:form>
+
+              </table>
+         
+                
+                
+            </div>
+            
+            
+            <div class="col-md-3">
+                
+               <h4>Friend Suggestions</h4>
+                
+                <h:dataTable rows="#{home.friendDetails.size()}"  value="#{home.friendDetails}" var="f" class="table-condensed" >
+                    
+                    <h:column>
+                        <h:form>
+                            
+                        
+                        <img src="#{f.profilePicURL}" width="50" height="50"/> <h:outputText id="friendFirstName" value="#{f.firstName}"/><h:outputText id="friendLastName" value="#{f.lastName}"/> 
+                        <br/>
+                        <h:outputText id="friendDetails" value="@#{f.userName}" />
+                        
+                        <h:commandButton class="btn btn-primary" value="View" action="#{friendProfile.ViewFriendProfile()}" class="btn btn-primary">
+                            <f:param name="friendId" value="#{f.id}"/>
+                        </h:commandButton>
+                        <br/>
+                        </h:form>
+                    </h:column>
+                    
+                </h:dataTable>
+
+                
+            </div>
+            
+        </div>
+        
+        
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+                                      

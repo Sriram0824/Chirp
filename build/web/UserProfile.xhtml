@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>User Profile</title>
+        <script src="Scripts/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="Scripts/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+      
+    </h:head>
+    <h:body>
+        
+        <div class="row page-header" >
+
+            <div class="col-md-3  ">
+                <table class="table table-striped form-inline">
+                    <tr>
+                        <td>
+                            <h:link outcome="UserProfile.xhtml" style="text-decoration: none; color:black;" >My Profile</h:link>
+                        </td>
+                        <td>
+                            <h:link outcome="MyTweets.xhtml" style="text-decoration: none; color:black;" >My Tweets</h:link>
+                        </td>
+
+
+                    </tr>
+                </table>
+            </div> 
+
+            <div class="col-md-6">
+                
+          <p align="center">  <h:link outcome="Home.xhtml" class="focus" style="text-decoration: none; font-size:x-large; font-family:'Comic Sans MS', cursive, sans-serif; color: orange" >Twitter</h:link> </p>
+            </div>
+
+            <div class="col-md-3">
+                <table class="table table-striped form-inline">
+                    <tr>
+
+                        <td>
+                            <h:link outcome="Followers.xhtml" style="text-decoration: none; color:black;" >Followers</h:link>
+                        </td>
+                        <td>
+                            <h:link outcome="Following.xhtml" style="text-decoration: none; color:black;" >Following</h:link>
+                        </td>
+                        <td>
+                            <h:link outcome="Login.xhtml" style="text-decoration: none; color:black;" >Logout</h:link>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+       
+         <div class="row" style=" height:500px;">
+            <div class="col-sm-3">
+            </div>
+            
+            <div class="col-sm-6">
+                 
+               <h2 class="text-primary" align="center">User Profile</h2>
+                <table class="table table-striped">
+                <h:form class="form form-control">
+               
+                   <tr>
+                       <td>
+                           <Strong>First Name</Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:outputText value="#{userProfile.firstName}" id="firstName"  class="form form-control"/>
+                                        
+                        </td>
+                   </tr>
+                   
+                   <tr>
+                       <td>
+                           <Strong>Last Name</Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:outputText value="#{userProfile.lastName}" id="lastName" class="form form-control" />
+                       </td>
+                   </tr>
+                    
+                    <tr>
+                       <td>
+                           <Strong>Email</Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:outputText value="#{userProfile.email}" id="email" class="form form-control" />
+                       </td>
+                   </tr>
+                   
+                   <tr>
+                       <td>
+                          <Strong> Chirp Handle</Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:outputText value="#{userProfile.userName}" id="userName" class="form form-control" />
+                       </td>
+                   </tr>
+                   
+                   
+              </h:form>
+           </table> 
+               
+               <br/>
+                 <h3 class="text-primary" align="center">Change Password</h3>
+               
+               <table class="table table-striped">
+                <h:form class="form form-control">
+               
+                   <tr>
+                       <td>
+                          <Strong> Current Password </Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputSecret value="#{userProfile.password}" id="currentPassword" class="form form-control" />
+                       </td>
+                   </tr>
+                    
+                    <tr>
+                       <td>
+                          <Strong> New Password </Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputSecret value="#{userProfile.newPassword}" id="newPassword" class="form form-control" />
+                       </td>
+                   </tr>
+                   
+                   <tr>
+                       <td>
+                         <Strong>  Confirm Password </Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputSecret value="#{userProfile.newPassword}" id="confirmPassword" class="form form-control" />
+                       </td>
+                   </tr>
+                   
+                   
+                   <tr>
+                       <td colspan="3" align="center">
+                           <h:commandButton value="ChangePassword" action="#{userProfile.ChangePassword}" class="btn btn-primary"/>
+                           
+                       </td>
+                       
+                   </tr>
+                   
+              </h:form>
+           </table>   
+            </div>
+            
+            <div class="col-sm-3">
+            </div>
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <br/>
+            </div> 
+            
+            <div class="col-md-6">
+                <br/>
+                <strong><p align="center">&copy;Sriram Manchiraju 2016</p></strong>
+                <br/>
+            </div>
+                
+            
+        <div class="col-md-3">
+                <br/>
+                
+               
+            </div> 
+            
+        </div>
+    </h:body>
+</html>
+

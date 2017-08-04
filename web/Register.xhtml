@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <script src="Scripts/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="Scripts/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>Registration</title>
+    </h:head>
+    <h:body>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            
+            <div class="col-sm-6">
+                <h2 class="text-primary" align="center">Register</h2>
+                
+              <table class="table table-striped">
+                <h:form class="form form-control">
+               
+                   <tr>
+                       <td>
+                           <Strong>First Name</Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputText value="#{register.firstName}" id="firstName"  class="form form-control"/>
+                                        
+                        </td>
+                   </tr>
+                   
+                   <tr>
+                       <td>
+                           <Strong>Last Name</Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputText value="#{register.lastName}" id="lastName" class="form form-control" />
+                       </td>
+                   </tr>
+                    
+                    <tr>
+                       <td>
+                           <Strong>Email</Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputText value="#{register.email}" id="email" class="form form-control" />
+                       </td>
+                   </tr>
+                   
+                   <tr>
+                       <td>
+                          <Strong> Chirp Handle</Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputText value="#{register.userName}" id="userName" class="form form-control" />
+                       </td>
+                   </tr>
+                   
+                   <tr>
+                       <td>
+                          <Strong> Password </Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputText value="#{register.password}" id="password" class="form form-control" />
+                       </td>
+                   </tr>
+                   
+                   <tr>
+                       <td>
+                         <Strong>  Confirm Password </Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:inputText value="#{register.password}" id="confirmPassword" class="form form-control" />
+                       </td>
+                   </tr>
+                   
+                   
+                   
+                    <tr>
+                       <td>
+                        <Strong>   Gender </Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:selectOneMenu value="#{register.gender}" id="gender" class="form form-control">
+                               <f:selectItem itemValue="" itemLabel="- - select one - -"/>
+                               <f:selectItem itemValue="M" itemLabel="Male"/>
+                               <f:selectItem itemValue="F" itemLabel="Female"/>
+                           </h:selectOneMenu>
+                       </td>
+                   </tr>
+                    
+                   <tr>
+                       <td>
+                        <Strong>   Country </Strong>
+                       </td>
+                       <td align="center">
+                           :
+                       </td>
+                       <td>
+                           <h:selectOneMenu value="#{register.country}" id="country" class="form form-control">
+                               <f:selectItem itemValue="" itemLabel="- - select one - -"/>
+                               <f:selectItem itemValue="1" itemLabel="India"/>
+                               <f:selectItem itemValue="2" itemLabel="USA"/>
+                           </h:selectOneMenu>
+                       </td>
+                   </tr>
+                   
+                   <tr>
+                       <td colspan="3" align="center">
+                           <h:commandButton value="Reigister" action="#{register.RegisterUser}" class="btn btn-primary"/>
+                           
+                       </td>
+                       
+                   </tr>
+                   
+              </h:form>
+           </table>   
+                 
+            </div>
+            
+            <div class="col-sm-3">
+            </div>
+            
+        </div>
+    </h:body>
+</html>
+
