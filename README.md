@@ -1,3 +1,5 @@
-# Chirp
-Working module of Twitter with different functionalities included like 
-freind request,mutual friends, tweet, retweet , messaging, news feed
+About:
+This is an academic project and we developed it as a part of our curriculum in a course called java. We developed it as a three member team. This project is a working simulation of social networking site Twitter and we implemented different functionalities like Login, Registration, News Feed, Tweet, Retweet, hashtags, Mutual Friends, Following, Followers and Messaging. My contribution to this project is I developed the front end for some pages like login page, messages and profile page using XHTML, CSS and Bootstrap. Also I handled the back end functionalities like Login, Registration, Profile View, and Messaging. 
+
+Development Process:
+So we developed it using JSF and XHTML using Net Beans IDE. The core of this project lies in the architecture of the database. So we implemented all the normalization forms, used joins and the other main thing is we should be able to capture the user Id when he logs in using session. We made the user id as the primary key and based on that all the functionalities will work like following and followers. We used two separate tables for following and followers. Every time he clicks on a follow button of a particular users then that persons Id will be stored in the following table along with followers as the logged in user’s id.
